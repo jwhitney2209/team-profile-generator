@@ -1,15 +1,19 @@
-// imports
+// import modules
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
 const Employee = require('./lib/Employee');
-// const generateHTML = require('./src/generateHTML.js')
+const fs = require('fs');
+const generateHTML = require('./src/generateHTML.js');
 
+
+// empty arrays to store objects
 const managers = [];
 const engineers = [];
 const interns = [];
 
+// Initial prompt to user after init is invoked. 
 const addManager = () => {
   inquirer.prompt([
     {
@@ -65,6 +69,7 @@ const addManager = () => {
       }
     }
   ])
+  // save responses to new Manager object
   .then(function(res) {
     const manager = new Manager(
       res.name, 
@@ -76,10 +81,11 @@ const addManager = () => {
       managers.push(manager)
   })
   .then(function(){
-    addNew()
+    addNew();
   });
 };
 
+// prompt user for new member's role
 const addInternEngineer = () => {
   inquirer.prompt([
     {
@@ -89,8 +95,10 @@ const addInternEngineer = () => {
       choices: ['Engineer', 'Intern']
     },
   ])
-  .then(function(data){
-    switch (data.role) {
+  // begin switch/case after role is selected
+  .then(function(res){
+    switch (res.role) {
+      // prompt questions when user select's engineer
       case 'Engineer':
         inquirer.prompt([
           {
@@ -146,6 +154,7 @@ const addInternEngineer = () => {
           },
           }
         ])
+        // save responses to new engineer object
         .then(function(res) {
           const engineer = new Engineer(
             res.name,
@@ -160,6 +169,7 @@ const addInternEngineer = () => {
           addNew();
         });
         break;
+      // Prompt questions if user selects Intern
       case 'Intern':
         inquirer.prompt([
           {
@@ -215,6 +225,7 @@ const addInternEngineer = () => {
           },
         }
         ])
+        // save responses to new Intern Object
         .then(function(res) {
           const intern = new Intern(
             res.name,
@@ -233,6 +244,7 @@ const addInternEngineer = () => {
   })
 };
 
+// prompt user if they would like to add a new team member
 const addNew = () => {
   console.log(`
   =====================
@@ -247,22 +259,24 @@ const addNew = () => {
       default: false
     },
   ])
+  // run function to add new team members if user confirms addition, if not, end the prompt and write the file
   .then(function(res) {
     if(res.confirmAdd === true) {
       addInternEngineer();
     } else {
       console.log(`Done!`);
-      endPrompt(managers, engineers, interns);
+      writeFile(managers, engineers, interns);
     }
   })
 };
 
-function endPrompt(managers, engineers, interns) {
+// write file after user prompts have been answered
+function writeFile(managers, engineers, interns) {
   console.log(`Success! HTML File has been generated! Please check your /dist directory for the file`);
   // const html = generateHTML(managers, engineers, interns);
 }
 
-
+// starts the application
 function init() {
   console.log(`
 =================
