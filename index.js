@@ -7,7 +7,6 @@ const Employee = require('./lib/Employee');
 const fs = require('fs');
 const generateHTML = require('./src/generateHTML.js');
 
-
 // empty arrays to store objects
 let employees = [];
 
@@ -259,7 +258,7 @@ function writeFile(employees) {
     console.log(`Success! HTML File has been generated! Please check your /dist directory for the file`);
   })
   // const html = generateHTML(managers, engineers, interns);
-}
+};
 
 // starts the application
 function init() {
@@ -269,6 +268,6 @@ function init() {
 =================
 `)
   addManager();
-}
+};
 
 init();

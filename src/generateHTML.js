@@ -1,3 +1,4 @@
+// create boilerplate html
 function generateHTML(data) {
 return `
 <!DOCTYPE html>
@@ -33,6 +34,7 @@ return `
 `;
 }
 
+// generate cards based on getRole() 
 function generateCards(data) {
   return data
     .map(dataRole => {
@@ -70,7 +72,7 @@ function generateManager(data) {
       <div class="content">
       <p>
       ID: ${data.id}<br>
-      Email: ${data.email}<br>
+      Email: <a href="mailto:${data.email}">${data.email}</a><br>
       Office#: ${data.officeNumber}
       </p>
       </div>
@@ -80,6 +82,7 @@ function generateManager(data) {
 `;
 };
 
+// create an engineer card
 function generateEngineer(data){
 console.log(data);
   return `
@@ -97,8 +100,8 @@ console.log(data);
       <div class="content">
       <p>
       ID: ${data.id}<br>
-      Email: ${data.email}<br>
-      Github: ${data.github}
+      Email: <a href="mailto:${data.email}">${data.email}</a><br>
+      Github: <a href="https://github.com/${data.github}" target="_blank">${data.github}</a>
       </p>
       </div>
     </div>
@@ -107,6 +110,7 @@ console.log(data);
   `;
 };
 
+// create an intern card
 function generateIntern(data) {
 console.log(data);
 return `
@@ -124,7 +128,7 @@ return `
       <div class="content">
       <p>
       ID: ${data.id}<br>
-      Email: ${data.email}<br>
+      Email: <a href="mailto:${data.email}">${data.email}</a><br>
       School: ${data.school}
       </p>
       </div>
