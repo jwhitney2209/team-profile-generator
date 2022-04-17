@@ -24,7 +24,7 @@ return `
   </section>
   <section class="section">
     <div class="container">
-      <div class="columns is-multiline">
+      <div class="columns is-centered is-multiline">
         ${generateCards(data)}
       </div>
     </div>
@@ -32,7 +32,7 @@ return `
 </body>
 </html>
 `;
-}
+};
 
 // generate cards based on getRole() 
 function generateCards(data) {
@@ -58,7 +58,7 @@ function generateCards(data) {
 function generateManager(data) {
   console.log(data);
     return `
-<div class="card column m-2">
+<div class="card column is-one-third m-2">
   <header class="card-header">
     <p class="card-header-title">
       ${data.name}
@@ -86,7 +86,7 @@ function generateManager(data) {
 function generateEngineer(data){
 console.log(data);
   return `
-<div class="card column m-2">
+<div class="card column is-one-third m-2">
   <header class="card-header">
     <p class="card-header-title">
       ${data.name}
@@ -114,7 +114,7 @@ console.log(data);
 function generateIntern(data) {
 console.log(data);
 return `
-<div class="card column m-2">
+<div class="card column is-one-third m-2">
   <header class="card-header">
     <p class="card-header-title">
       ${data.name}

@@ -159,7 +159,6 @@ const addNew = () => {
             res.email,
             res.github
           );
-          console.log(engineer);
           employees.push(engineer);
         })
         .then(function() {
@@ -230,7 +229,6 @@ const addNew = () => {
             res.email,
             res.school
           );
-          console.log(intern);
           employees.push(intern);
         })
         .then(function() {
@@ -248,7 +246,6 @@ const addNew = () => {
 
 // write file after user prompts have been answered
 function writeFile(employees) {
-  console.log(employees);
   const html = generateHTML(employees)
   fs.writeFile('./dist/index.html', html, err => {
     if (err) {
