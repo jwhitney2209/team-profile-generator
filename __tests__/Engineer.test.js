@@ -8,5 +8,3 @@ test('creates an engineer object', () => {
   expect(engineer.email).toEqual(expect.any(String));
   expect(engineer.github).toEqual(expect.any(String));
 });
-
-test('creates ')
