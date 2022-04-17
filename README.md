@@ -5,6 +5,10 @@
   
   
 
+https://user-images.githubusercontent.com/95243766/163698501-8c5152ed-e94c-499a-83f2-c0f9d570c2bb.mp4
+
+
+
   ## Description
   A command-line application that takes in information about employees on a team and generates an HTML webpage that displays summaries for each person. 
 
